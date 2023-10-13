@@ -1,24 +1,18 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
-// import cardinfo from './../assets/cardinfo.json'
 import cardInfoRaw from "./../assets/CardInfoRaw";
+import SearchEngine from "./../modules/search/SearchEngine";
 
+const searchEngine = new SearchEngine();
+searchEngine.maxResults;
 const cards = cardInfoRaw.data;
 defineProps<{ msg: string }>()
 
-const count = ref(0)
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
 
   <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
     <p>
       <code>{{ cards[0] }}</code>
       <img :src="cards[0].card_images[0].image_url" />
